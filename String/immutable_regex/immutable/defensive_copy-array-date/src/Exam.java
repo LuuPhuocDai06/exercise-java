@@ -13,7 +13,7 @@ public final class Exam {
     public Exam(String subject, int[] scores, LocalDate date) {
         this.subject = Objects.requireNonNull(subject).trim().toLowerCase();
         if (this.subject.isEmpty()) throw new IllegalArgumentException("Subject không được để trống!");
-        this.scores = Objects.requireNonNull(scores.clone(), "scores trong!");
+        this.scores = Objects.requireNonNull(scores, "scores trong!").clone();
         this.date = Objects.requireNonNull(date, "date trống!");
 //        this.date = new Date(date.getTime());
     }
