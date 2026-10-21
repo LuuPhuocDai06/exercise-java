@@ -9,7 +9,7 @@ public final class Order {
     public Order(String id, List<Item> items) {
         this.id = Objects.requireNonNull(id, "id không đc bỏ trống!").trim().toLowerCase();
         if (this.id.isEmpty()) throw new IllegalArgumentException("id trống!");
-        this.items = Objects.requireNonNull(List.copyOf(items), "Ds không được trống!");
+        this.items = List.copyOf(Objects.requireNonNull(items, "Ds không được trống"));
         if (this.items.isEmpty()) throw new IllegalArgumentException("ds Trống!");
     }
 
