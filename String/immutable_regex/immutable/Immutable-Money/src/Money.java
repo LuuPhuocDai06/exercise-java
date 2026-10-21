@@ -7,8 +7,8 @@ public class Money implements Comparable<Money> {
     private final long amount;
 
     public Money(long amount, String currency){
-        currency.trim().toLowerCase();
-        this.currency = Objects.requireNonNull(currency, "currency không được để trống!");
+        this.currency = Objects.requireNonNull(currency).trim().toLowerCase();
+        if (this.currency.isEmpty()) throw new IllegalArgumentException("currency không đc trống!");
         if(amount < 0) throw new IllegalArgumentException("Số tiền không hợp lệ!");
         this.amount = amount;
     }
@@ -36,20 +36,20 @@ public class Money implements Comparable<Money> {
     // hàm add thêm tien.
     public Money add(Money other){
         if (!other.currency.equals(currency)) throw new IllegalArgumentException("không trùng currency");
-        return new Money(Math.addExact(other.amount, getAmount()), other.currency);
+        return new Money(Math.addExact(other.amount, amount), other.currency);
     }
 
     // Hàm subtract tru tien.
     public Money subtract(Money other){
         if (!other.currency.equals(currency)) throw new IllegalArgumentException("không trùng currency");
-        if(other.amount > getAmount()) throw new IllegalArgumentException("Số tiền khong du de rut!");
-        return new Money(getAmount() - other.getAmount(), other.getCurrency());
+        if(other.amount > amount) throw new IllegalArgumentException("Số tiền khong du de rut!");
+        return new Money(amount - other.amount, other.currency);
     }
 
     // Hàm multiply.
     public Money multiply(int factor){
-        if(factor <= 0) throw new IllegalArgumentException("Số khong hợp lê!");
-        return new Money(Math.multiplyExact(getAmount(), factor), this.getCurrency());
+        if(factor < 0) throw new IllegalArgumentException("Số khong hợp lê!");
+        return new Money(Math.multiplyExact(amount, factor), currency);
     }
 
     public static Money zero(String currency){
@@ -71,7 +71,7 @@ public class Money implements Comparable<Money> {
 
     @Override
     public int compareTo(Money o) {
-        if (o.currency.equals(currency)) throw new IllegalArgumentException("lỗi");
-        return 0;
+        if (!o.currency.equals(currency)) throw new IllegalArgumentException("lỗi");
+        return Long.compare(amount, o.amount);
     }
 }

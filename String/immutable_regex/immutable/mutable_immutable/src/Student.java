@@ -5,7 +5,9 @@ public final class Student {
     private final int age;
 
     public Student(String name, int age) {
-        this.name = name;
+        if (age <= 6) throw new IllegalArgumentException("Tuổi phải lớn hơn hoặc bằng 6");
+        this.name = Objects.requireNonNull(name, "Tên không được để trống!").trim().toLowerCase();
+        if (this.name.isEmpty()) throw new IllegalArgumentException("Tên trống!");
         this.age = age;
     }
 
@@ -30,6 +32,14 @@ public final class Student {
                 "name='" + name + '\'' +
                 ", age=" + age +
                 '}';
+    }
+
+    public Student withAge(int age){
+        return new Student(getName(), age);
+    }
+
+    public Student withName(String name){
+        return new Student(name, getAge());
     }
 }
 

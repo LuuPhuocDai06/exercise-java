@@ -7,8 +7,10 @@ public final class Order {
     private final List<Item> items;   // Item là class có setter: setName, setPrice
 
     public Order(String id, List<Item> items) {
-        this.id = id;
-        this.items = List.copyOf(items);
+        this.id = Objects.requireNonNull(id, "id không đc bỏ trống!").trim().toLowerCase();
+        if (this.id.isEmpty()) throw new IllegalArgumentException("id trống!");
+        this.items = Objects.requireNonNull(List.copyOf(items), "Ds không được trống!");
+        if (this.items.isEmpty()) throw new IllegalArgumentException("ds Trống!");
     }
 
     public String getId() {
@@ -21,26 +23,17 @@ public final class Order {
 
     // hàm add items.
     public Order addItems(Item item){
-        if (item.getName().isEmpty()) throw new IllegalArgumentException("Ten khong dc de trong!");
-        if (item.getPrice() < 0) throw new IllegalArgumentException("Gia tien phải lon hơn 0");
-
         List<Item> newItems = new ArrayList<>(items);
         newItems.add(item);
-
-        return new Order(getId(), newItems);
+        return new Order(id, newItems);
     }
 
     // xóa items.
     public Order removeItems(String itemName){
         if (itemName.isEmpty()) throw new IllegalArgumentException("Tên không dc trống!");
-
         List<Item> newItems = new ArrayList<>(items);
-        for(int i = 0; i < items.size(); i++){
-            if(itemName.equals(items.get(i).getName())){
-                newItems.remove(items.get(i));
-            }
-        }
-        return new Order(getId(), newItems);
+        newItems.removeIf(i -> i.getName().equals(itemName));
+        return new Order(id, newItems);
     }
 
     @Override

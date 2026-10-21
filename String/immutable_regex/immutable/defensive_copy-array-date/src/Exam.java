@@ -11,9 +11,10 @@ public final class Exam {
 
     // constructor nhận (String, int[], Date)
     public Exam(String subject, int[] scores, LocalDate date) {
-        this.subject = subject;
-        this.scores = scores.clone();
-        this.date = date;
+        this.subject = Objects.requireNonNull(subject).trim().toLowerCase();
+        if (this.subject.isEmpty()) throw new IllegalArgumentException("Subject không được để trống!");
+        this.scores = Objects.requireNonNull(scores.clone(), "scores trong!");
+        this.date = Objects.requireNonNull(date, "date trống!");
 //        this.date = new Date(date.getTime());
     }
 
@@ -25,8 +26,8 @@ public final class Exam {
         return scores.clone();
     }
 
-    public Date getDate() {
-        return new Date();
+    public LocalDate getDate() {
+        return date;
 //        return new Date(date.getTime());
     }
 

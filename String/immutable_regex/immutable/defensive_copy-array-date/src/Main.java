@@ -9,13 +9,12 @@ public class Main {
         Exam e1 = new Exam("Kiem tra", bktr, LocalDate.now());
         System.out.println(e1);
 
-        // thay đổi.
-        e1.getScores()[0] = 8;
-        bktr[0] = 8;
-        e1.getDate().setTime(0L);
-        System.out.println("\n"+e1);
-        // -> không bị thay đổi.
-        // Đổi qua LocalDate thì không cần phải copy vì nó đã là immutable.
-        // Không cần copy để trả ra nữa ta chỉ cần dùng cái bản copy khi vào để trả ra là đc.
+        Exam before = new Exam("Kiem tra", new int[]{9, 10}, LocalDate.of(2026, 10, 1));
+        int[] src = {9, 10};
+        Exam e = new Exam("Kiem tra", src, LocalDate.of(2026, 10, 1));
+        src[0] = 0;
+        e.getScores()[1] = 0;
+        System.out.println(e.equals(before));              // phải là true
+        System.out.println(e.getDate());                   // phải là 2026-10-01
     }
 }
