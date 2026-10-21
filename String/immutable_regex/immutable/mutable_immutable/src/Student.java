@@ -5,7 +5,7 @@ public final class Student {
     private final int age;
 
     public Student(String name, int age) {
-        if (age <= 6) throw new IllegalArgumentException("Tuổi phải lớn hơn hoặc bằng 6");
+        if (age <= 6 || age >= 150) throw new IllegalArgumentException("Tuổi phải lớn hơn hoặc bằng 6");
         this.name = Objects.requireNonNull(name, "Tên không được để trống!").trim().toLowerCase();
         if (this.name.isEmpty()) throw new IllegalArgumentException("Tên trống!");
         this.age = age;
