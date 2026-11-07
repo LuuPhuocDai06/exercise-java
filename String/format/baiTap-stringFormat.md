@@ -80,4 +80,3 @@ Yêu cầu:
 
 ---
 
-Làm xong gửi mình xem để chấm và góp ý.
