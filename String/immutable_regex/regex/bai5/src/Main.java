@@ -52,6 +52,7 @@ public class Main {
         // còn matches() nó sẽ mặc định tìm từ đến cuối chuỗi phải thỏa mã hết như tìm mail chỉ có mail thôi không bao gồm thứ khác
         // Nếu muốn check mk, số tk, mail... nói chung là một đoạn chuỗi chỉ chứa mấy cái liên quan thì dùng matches.
         // còn nếu muốn tìm kiếm tên, sđt, vật... trong một đoạn text hoặc danh sách dài thì nên dùng find nó sẽ lọc từ đầu đến cuối và lưu dùng group để xem.
+        // => find() thì tìm từng đoạn trong chuỗi, matches đòi khớp toàn bộ chuỗi.
 
     }
 }

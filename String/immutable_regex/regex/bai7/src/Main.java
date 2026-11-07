@@ -3,7 +3,7 @@ import java.util.regex.Pattern;
 public class Main {
     // hàm check mật khẩu.
     public static Boolean inputPassword(String input){
-        Pattern passwords = Pattern.compile("(?=.*[a-zA-Z])(?=.*\\d)(?=.*[\\p{S}\\p{P}])[a-zA-Z0-9\\p{S}\\p{P}]{8,20}");
+        Pattern passwords = Pattern.compile("(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[\\p{S}\\p{P}])[a-zA-Z0-9\\p{S}\\p{P}]{8,}");
         // \\p{S} và \\p{P} là bao gồm hết ký tự đặt biệt.
         Matcher checkpassword = passwords.matcher(input);
         return checkpassword.matches();
@@ -14,9 +14,9 @@ public class Main {
         // 1. Kiểm tra mật khẩu mạnh: ít nhất 8 ký tự, có ít nhất 1 chữ hoa, 1 chữ thường,
         // 1 chữ số, 1 ký tự đặc biệt (gợi ý: tìm hiểu lookahead (?=.*...)).
         System.out.println("1. Kiểm tra mật khẩu mạnh: ít nhất 8 ký tự, có ít nhất 1 chữ hoa, 1 chữ thường, 1 chữ số, 1 ký tự đặc biệt (gợi ý: tìm hiểu lookahead (?=.*...)).");
-        Pattern passwords = Pattern.compile("(?=.*[a-zA-Z])(?=.*\\d)(?=.*[\\p{S}\\p{P}])[a-zA-Z0-9\\p{S}\\p{P}]{8,20}");
+        Pattern passwords = Pattern.compile("(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[\\p{S}\\p{P}])[a-zA-Z0-9\\p{S}\\p{P}]{8,}");
         // \\p{S} và \\p{P} là bao gồm hết ký tự đặt biệt.
-        String password = "dai782006@";
+        String password = "daI782006@";
         Matcher checkpassword = passwords.matcher(password);
         if (checkpassword.matches()){
             System.out.println("password hợp lệ");
