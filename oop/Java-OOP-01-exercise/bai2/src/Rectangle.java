@@ -29,12 +29,12 @@ public class Rectangle {
     }
 
     // method getArea.
-    public void getArea(){
-        System.out.printf("Với hình chữ nhật có chiều rộng %.2f và chiều dài %.2f thì diện tích = %.2f \n",width, height, (width * height));
+    public double getArea(){
+        return width * height;
     }
 
     // method getPerimeter.
-    public void getPerimeter(){
-        System.out.printf("Với hình chữ nhật có chiều rộng %.2f và chiều dài %.2f thì chu vi = %.2f \n\n",width, height, (width + height)*2);
+    public double getPerimeter(){
+        return (width + height) * 2;
     }
 }

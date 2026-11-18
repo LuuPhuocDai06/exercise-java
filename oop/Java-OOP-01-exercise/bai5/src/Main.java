@@ -12,7 +12,7 @@ public class Main {
         System.out.println("\nNguyen Van A chuyen cho Nguyen Van B 200");
         System.out.println(acc3);
         System.out.println(acc_1);
-        BankAccount[] result = acc_1.transfer(acc3, 200);
+        BankAccount[] result = acc3.transfer(acc_1, 200);
         BankAccount r1 = result[0]; // Nguyen Van A
         BankAccount r2 = result[1]; // Nguyen Van B
         System.out.println(r1);

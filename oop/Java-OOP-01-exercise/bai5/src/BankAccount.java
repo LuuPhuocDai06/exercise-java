@@ -5,7 +5,7 @@ public final class BankAccount {
     private final double balance;
 
     public BankAccount(String owner, double balance){
-        if (owner.isEmpty()) throw new IllegalArgumentException("rỗng");
+        if (owner == null) throw new NullPointerException("rỗng");
         if (balance < 0) throw new IllegalArgumentException("số tiền không được âm");
         this.owner = owner;
         this.balance = balance;
@@ -48,9 +48,10 @@ public final class BankAccount {
     // method transfer.
     public BankAccount[] transfer(BankAccount to, double amount){
         if (amount < 0) throw new IllegalArgumentException("Số tiền phải dương");
-        if ((to.balance - amount) < 0) throw new IllegalArgumentException("Số tiền kh đủ");
-        BankAccount toNew = new BankAccount(to.owner, to.balance - amount);
-        return new BankAccount[]{toNew, new BankAccount(owner, balance + amount)};
+        if (amount > this.balance) throw new IllegalArgumentException("Số tiền kh đủ");
+        BankAccount sender = new BankAccount(this.owner, this.balance - amount);
+        BankAccount receiver = new BankAccount(to.owner, to.balance + amount);
+        return new BankAccount[]{sender, receiver};
     }
 
     // toString.
