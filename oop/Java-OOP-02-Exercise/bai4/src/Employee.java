@@ -1,4 +1,3 @@
-import javax.print.attribute.standard.NumberUp;
 import java.text.NumberFormat;
 import java.util.Locale;
 
