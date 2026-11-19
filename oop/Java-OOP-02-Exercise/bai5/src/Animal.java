@@ -16,7 +16,7 @@ public class Animal {
     }
 
     // method makeSound.
-    public void makeSound(){
-        System.out.print("");
+    public String makeSound(){
+        return name;
     }
 }

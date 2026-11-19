@@ -6,8 +6,7 @@ public class Dog extends Animal{
     }
 
     @Override
-    public void makeSound() {
-        super.makeSound();
-        System.out.println(super.getName()+" kêu gâu gâu");
+    public String makeSound() {
+        return super.makeSound()+" kêu gâu gâu";
     }
 }
