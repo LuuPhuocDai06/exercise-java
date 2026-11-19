@@ -1,8 +1,6 @@
 public class Intern extends Employee{
-    public Intern()
-    {
-        super();
-        super.setName("Nguyễn Văn C - Intern");
+    public Intern(String name, double baseSalary){
+        super(name, baseSalary);
     }
 
     @Override

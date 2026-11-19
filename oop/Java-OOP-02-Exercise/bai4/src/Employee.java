@@ -1,10 +1,15 @@
+import javax.print.attribute.standard.NumberUp;
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class Employee {
-    protected String name;
-    private final double baseSalary = 2000;
+    private String name;
+    private double baseSalary;
 
     public Employee(){}
-    public Employee(String name){
+    public Employee(String name, double baseSalary){
         this.name = name;
+        this.baseSalary = baseSalary;
     }
 
     public String getName() {
@@ -28,6 +33,8 @@ public class Employee {
     // toString.
     @Override
     public String toString() {
-        return String.format("Tên: %s - Lương cơ bản: %.2f - Lương/tháng: %.2f", name, baseSalary, salary());
+        Locale us = Locale.US;
+        NumberFormat fmus = NumberFormat.getCurrencyInstance(us);
+        return String.format("Tên: %s - Lương cơ bản: %s - Lương/tháng: %s", name, fmus.format(baseSalary), fmus.format(salary()));
     }
 }

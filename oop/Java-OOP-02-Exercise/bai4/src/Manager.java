@@ -2,9 +2,8 @@ public class Manager extends Employee{
     private double bonus;
 
     public Manager(){super();}
-    public Manager(double bonus){
-        super();
-        super.setName("Nguyễn Văn A - Manager");
+    public Manager(String name, double baseSalary, double bonus){
+        super(name, baseSalary);
         this.bonus = bonus;
     }
 

@@ -28,6 +28,6 @@ public class Rectangle extends Shape{
 
     @Override
     public double area() {
-        return super.area() + (width * height);
+        return width * height;
     }
 }

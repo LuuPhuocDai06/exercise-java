@@ -3,9 +3,8 @@ public class Developer extends Employee{
     private double rate;
 
     public Developer(){super();}
-    public Developer(double overtimeHours, double rate){
-        super();
-        super.setName("Nguyễn Văn B - Developer");
+    public Developer(String name, double baseSalary, double overtimeHours, double rate){
+        super(name, baseSalary);
         this.overtimeHours = overtimeHours;
         this.rate = rate;
     }

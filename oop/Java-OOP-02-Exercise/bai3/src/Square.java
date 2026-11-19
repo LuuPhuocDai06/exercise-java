@@ -4,8 +4,4 @@ public class Square extends Rectangle{
         super.setName("vuông");
     }
 
-    @Override
-    public double area() {
-        return super.area();
-    }
 }
