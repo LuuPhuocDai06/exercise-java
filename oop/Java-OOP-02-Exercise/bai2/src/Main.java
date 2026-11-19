@@ -3,7 +3,9 @@ public class Main {
     public static void main(String[] args){
         C c = new C();
         // Nếu không dùng super và truyền tham số name vào thì sẽ lỗi biên dịch
-        // Kiểu gọi new C() mà lớp c -> b -> a nên từ lớp b thiếu tham số truyền vào lớp cha a khi lớp a thêm một tham số.
-        // Nên buộc phải super và truyền tham số vào super để truyền đến lớp cha.
+        // Lớp B kế thừa từ lớp A và từ cái constructor của A nhưng vì A thêm tham số vào
+        // mà lớp B thì không có thay đổi theo thì lớp B sẽ kh tìm thấy cái nào khớp cả
+        // cách sửa là truyen tham số vào super rồi lúc đó lớp B mới thay khớp với cái
+        // constructor của lớp A.
     }
 }

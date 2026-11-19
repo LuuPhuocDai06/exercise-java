@@ -19,5 +19,10 @@ public class Main {
         System.out.println("Tổng tiền thanh toán bằng tất cả phương thức = "+checkout(payments));
     }
 
-
+    // checkout nhận mảng Payment[], mỗi phần tử là biến kiểu Payment nhưng trỏ tới đối tượng con
+    // (Cash, Card, EWallet, Crypto). Khi gọi x.payment(), Java chạy bản payment()
+    // của đối tượng thật lúc runtime, nên mỗi loại tự tính phí theo cách riêng
+    // mà checkout không cần biết đó là loại nào.
+    // Vì vậy thêm CryptoPayment (chỉ cần extends Payment và override)
+    // thì checkout không phải sửa dòng nào.
 }
